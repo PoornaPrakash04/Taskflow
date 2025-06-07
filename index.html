@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TASKFLOW</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- FullCalendar CDN -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+</head>
+<body>
+  <div class="white-overlay"></div>      
+  <!-- Header with Login and Signup Buttons -->
+  <header>
+    <h1>TASKFLOW</h1>
+    <div class="auth-buttons">
+      <button id="loginBtn">Login</button>
+      <button id="signupBtn">Signup</button>
+    </div>
+  </header>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span id="closeLogin" class="close">&times;</span>
+      <form id="loginForm">
+        <h2>Login</h2>
+        <input type="text" name="loginUsername" placeholder="Username" required /><br>
+        <input type="password" name="loginPassword" placeholder="Password" required /><br>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Signup Modal -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span id="closeSignup" class="close">&times;</span>
+      <form id="signupForm">
+        <h2>Sign Up</h2>
+        <input type="text" id="signupName" placeholder="Name" required /><br>
+        <input type="email" id="signupEmail" placeholder="Email" required /><br>
+        <input type="text" name="signupUsername" placeholder="Username" required /><br>
+        <input type="password" name="signupPassword" placeholder="Password" required /><br>
+        <input type="password" name="signupConfirmPassword" placeholder="Confirm Password" required /><br>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Task Creation Form -->
+  <section class="task-form-section">
+    <form id="taskForm">
+      <input type="text" id="title" placeholder="Task Title" required />
+      <input type="date" id="date" />
+      <select id="priority" required>
+        <option value="">Priority</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+      <select id="status" required>
+        <option value="">Status</option>
+        <option value="todo">To Do</option>
+        <option value="ongoing">Ongoing</option>
+        <option value="done">Done</option>
+      </select>
+      <button type="submit">Add Task</button>
+    </form>
+  </section>
+
+  <!-- Task Columns -->
+  <main class="task-columns">
+    <div id="todo" class="column">
+      <h3>To Do</h3>
+    </div>
+    <div id="ongoing" class="column">
+      <h3>Ongoing</h3>
+    </div>
+    <div id="done" class="column">
+      <h3>Done</h3>
+    </div>
+  </main>
+
+  <!-- Task Detail Modal -->
+  <div id="taskDetailModal" class="modal">
+    <div class="modal-content">
+      <span id="closeTaskDetail" class="close">&times;</span>
+      <form id="taskDetailForm">
+        <h2>Edit Task</h2>
+        <input type="text" id="detailTaskText" required />
+        <input type="date" id="detailDueDate" />
+        <select id="detailPriority" required>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+        <select id="detailTaskType" required>
+            <option value="todo">To Do</option>
+            <option value="ongoing">Ongoing</option>
+            <option value="done">Done</option>
+          </select>
+          <button type="submit">Update Task</button>
+        </form>
+        <button id="deleteTaskBtn" class="delete-btn">Delete Task</button>
+      </div>
+    </div>
+    <h6>📅 Calendar View</h6>
+    <div id="calendar" style="margin-top: 20px;"></div>
+
+  
+    <script src="script.js"></script>
+  </body>
+  </html>
+  

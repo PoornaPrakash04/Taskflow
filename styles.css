@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: #222;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .white-overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100vw;    
+    height: 100vh;  
+    background: rgba(255, 255, 255, 0.4); 
+    pointer-events: none;  
+    z-index: 1;       
+  }
+  header h1 {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 34px;
+    font-weight: 900;
+    color: #333333;
+    letter-spacing: 1.5px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px 20px;
+    border-radius: 14px;
+    box-shadow: 0 8px 10px rgba(244, 242, 242, 0.15);
+    margin-bottom: 10px;
+    user-select: none;
+    backdrop-filter: blur(8px);
+    transition: background-color 0.3s ease;
+  } 
+
+  button {
+    padding: 8px 16px;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #303f9f;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    position: relative;
+    width: 350px;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  .close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #444;
+  }
+  
+  .modal-content h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2e4a36; 
+  }
+  
+  
+  .modal-button {
+    width: 100%;
+    background-color: #2e4a36;
+    color: #ffffff;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  } 
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;  
+  border: 1px solid #ccc;
+  border-radius: 999px;  
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+  .task-form-section {
+    margin-bottom: 80px;
+  }
+  
+  #taskForm {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  input[placeholder="Task Title"] {
+    max-width: 700px;
+    width: 100%;
+    display: block;
+    margin: 10px auto;
+  }
+  #taskForm input, #taskForm select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+  }
+  
+  .task-columns {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  #taskDetailForm input,
+  #taskDetailForm select {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px; 
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+  .column {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 10px;
+    min-height: 350px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+  
+  .column h3 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .column.drag-over {
+    background-color: #dceefb;
+  }
+  .task {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    cursor: grab;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+  }
+  .task.dragging {
+    opacity: 0.5;
+  }
+  .task .delete {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: rgb(204, 13, 13);
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .delete-btn {
+    margin-top: 10px;
+    background-color: #d9534f;
+  }
+  .delete-btn:hover {
+    background-color: #c9302c;
+  }
+  header, .task-form-section, main {
+    position: relative;
+    z-index: 2;
+  }
+  #todo {
+    background-color:#E3F2FD ;
+  }
+  #ongoing {
+    background-color: #ECD9C6; 
+  }
+  #done {
+    background-color: #D4EDDA; 
+  }
+  #todo h3 {
+    color: #0D47A1; 
+  }
+  
+  #ongoing h3 {
+    color: #795548; 
+  }
+  #done h3 {
+    color: #2E7D32; 
+  }
+  input, select {
+    font-size: 15px; 
+    padding: 30px;   
+  }
+#calendar {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 600px;  
+    margin: 0 auto;    
+    height: 600px;     
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .fc-toolbar-title {
+    font-size: 1.6rem;
+    color: #333;
+  }
+  .fc-button {
+    background-color: #4CAF50;
+    border: none;
+    padding: 6px 12px;
+    color: white;
+    border-radius: 6px;
+    margin: 0 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .fc-button:hover {
+    background-color: #45a049;
+  }
+  
+  .fc-daygrid-event {
+    background-color: #2196F3;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  @media (max-width: 768px) {
+    #calendar {
+      padding: 10px;
+      font-size: 0.85rem;
+    }
+  
+    .fc-toolbar-title {
+      font-size: 1.2rem;
+    }
+  
+    .fc-button {
+      padding: 4px 8px;
+      font-size: 0.8rem;
+    }
+  }
+  .fc-daygrid-event {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+  }
+  @media (max-width: 768px) {
+    .task-columns {
+      flex-direction: column;
+    }
+  
+    .column {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  @media (max-width: 768px) {
+    input, select {
+      padding: 12px;
+      font-size: 14px;
+    }
+  }
+  @media (max-width: 500px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    header button {
+      margin-top: 10px;
+    }
+  }
+  .modal-content {
+    width: 90%;
+    max-width: 350px;
+  }
+        
+  
